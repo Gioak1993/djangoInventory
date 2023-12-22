@@ -18,8 +18,11 @@
         <h3>{{productinfo.description_text}}</h3>
         <span>{{productinfo.price_number}}</span>
         <p>{{productinfo.get_condition_display}}</p>
+        {% for image in productinfo.images.all %}
+            <img src="{{ image.image_url }}" alt="{{ image.alt_text }}">
+        {% endfor %}
         
-        
+      
 
 
     

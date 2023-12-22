@@ -39,6 +39,8 @@ class ProductInfo (models.Model):
     rack_number = models.IntegerField("Rack number",default = 0)
     item_number = models.IntegerField("Item number", default = 0)
     
+
+
     #location #bodega y rack 
 
     def __str__(self):
@@ -46,3 +48,7 @@ class ProductInfo (models.Model):
     
 
 
+class Images(models.Model):
+    image_url = models.URLField()
+    alt_text = models.CharField(max_length=255)
+    onProduct = models.ForeignKey(ProductInfo, related_name = "images", on_delete= models.CASCADE)

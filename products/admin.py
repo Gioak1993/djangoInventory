@@ -1,7 +1,11 @@
 from django.contrib import admin
-from .models import ProductInfo
+from .models import ProductInfo, Images
 
 # Register your models here.
+
+class ImagesInLine(admin.StackedInline):
+    model = Images
+    extra = 7
 
 class ProductAdmin(admin.ModelAdmin):
     fieldsets = [
@@ -13,5 +17,9 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = ["title_text", "condition", "storage_number"]
     list_filter = ["condition"]
     search_fields = ["title_text"]
+    inlines = [ImagesInLine]
+
+
+    
 
 admin.site.register(ProductInfo, ProductAdmin)
