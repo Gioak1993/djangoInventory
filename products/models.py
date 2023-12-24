@@ -21,8 +21,8 @@ from django.db import models
 
 class ProductInfo (models.Model):
 
-    title_text = models.CharField ("Title" , max_length = 80)
-    description_text = models.TextField ("Description", default = 'Insert a Description' ,max_length = 1000)
+    title_text = models.CharField ("Title" , max_length = 200)
+    description_text = models.TextField ("Description", default = 'Insert a Description' ,max_length = 5000)
     sku_text = models.CharField ("SKU", default = 'noSku', max_length = 20)
     upc_text = models.CharField ("UPC", default = 'noUpc', max_length = 15)
     cost_number = models.FloatField ("Cost", default = 0)
@@ -49,6 +49,6 @@ class ProductInfo (models.Model):
 
 
 class Images(models.Model):
-    image_url = models.URLField()
+    image_url = models.ImageField()
     alt_text = models.CharField(max_length=255)
     onProduct = models.ForeignKey(ProductInfo, related_name = "images", on_delete= models.CASCADE)

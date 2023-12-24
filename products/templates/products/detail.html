@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
@@ -18,9 +19,13 @@
         <h3>{{productinfo.description_text}}</h3>
         <span>{{productinfo.price_number}}</span>
         <p>{{productinfo.get_condition_display}}</p>
-        {% for image in productinfo.images.all %}
-            <img src="{{ image.image_url }}" alt="{{ image.alt_text }}">
-        {% endfor %}
+        {% if productinfo.images.all %}
+            {% for image in productinfo.images.all %}
+                <img src= "https://myinventory-pics.s3.us-east-2.amazonaws.com/media/{{image.image_url}}" alt="{{ image.alt_text }}">
+            {% endfor %}
+        {% else %}
+            <p>No images available</p>
+        {% endif %}
         
       
 
