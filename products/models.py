@@ -38,6 +38,8 @@ class ProductInfo (models.Model):
     storage_number = models.IntegerField("Storage Number", default = 0)
     rack_number = models.IntegerField("Rack number",default = 0)
     item_number = models.IntegerField("Item number", default = 0)
+    show_onStore = models.BooleanField("Show in store?",default = True)
+    sold = models.BooleanField("Has been sold?",default = False)
     
 
 

@@ -12,20 +12,58 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="">
+        <style>
+            h1 {
+                color: red;
+                text-align: center;
+            }
+            img {
+                width: 10em;
+                height: 10em;
+
+            }
+            .Price span{
+                color: blue;
+            }
+
+
+        </style>
     </head>
     <body>
+
+        <header>
+            <h1>Etenda Liquidations</h1>
+            <nav>
+                <a href="#home">Home</a>
+                <a href="../">Products</a>
+                <a href="#contact">Contact Us</a>
+                <a href="#about">About Us</a>
+            </nav>
+        </header>
         
-        <h1>{{productinfo.title_text}}</h1>
-        <h3>{{productinfo.description_text}}</h3>
-        <span>{{productinfo.price_number}}</span>
-        <p>{{productinfo.get_condition_display}}</p>
-        {% if productinfo.images.all %}
-            {% for image in productinfo.images.all %}
-                <img src= "https://myinventory-pics.s3.us-east-2.amazonaws.com/media/{{image.image_url}}" alt="{{ image.alt_text }}">
-            {% endfor %}
+        {% if productinfo.show_onStore == True%}
+            <h2>{{productinfo.title_text}}</h2>
+            <h3>Description</h3>
+            <p>{{productinfo.description_text}}</p>
+            <div class="Price">
+                {% if productinfo.sold == False %}
+                    <span>Price {{productinfo.price_number}}</span>
+                {% else %}
+                    <span>Sold Out!</span>
+                {% endif %}
+            </div>
+            <p>Condition: {{productinfo.get_condition_display}}</p>
+            {% if productinfo.images.all %}
+                {% for image in productinfo.images.all %}
+                    <img src= "https://myinventory-pics.s3.us-east-2.amazonaws.com/media/{{image.image_url}}" alt="{{ image.alt_text }}">
+                {% endfor %}
+            {% else %}
+                <p>No images available</p>
+            {% endif %}
         {% else %}
-            <p>No images available</p>
-        {% endif %}
+            <h2>Product not Found</h2>
+        {% endif%}
+            
         
       
 
