@@ -68,6 +68,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "django.template.context_processors.media",
             ],
         },
     },
@@ -129,7 +130,7 @@ USE_TZ = True
 
 STATIC_URL = 'pictures/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
-MEDIA_URLS ='https://myinventory-pics.s3.us-east-2.amazonaws.com/media/'
+MEDIA_URL ="https://myinventory-pics.s3.us-east-2.amazonaws.com/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
@@ -157,6 +158,9 @@ STORAGES = {
     },    
     "staticfiles": {
         "BACKEND": "storages.backends.s3.S3Storage",
-        },    
+        "OPTIONS": {
+            "location": "static",
+        },
+    },    
 }
 

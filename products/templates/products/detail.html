@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -11,23 +12,8 @@
         <title>my example page</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
-        <style>
-            h1 {
-                color: red;
-                text-align: center;
-            }
-            img {
-                width: 10em;
-                height: 10em;
-
-            }
-            .Price span{
-                color: blue;
-            }
-
-
-        </style>
+        <link rel="stylesheet" href="{% static "stylesheet.css" %}">
+        
     </head>
     <body>
 
@@ -55,7 +41,7 @@
             <p>Condition: {{productinfo.get_condition_display}}</p>
             {% if productinfo.images.all %}
                 {% for image in productinfo.images.all %}
-                    <img src= "https://myinventory-pics.s3.us-east-2.amazonaws.com/media/{{image.image_url}}" alt="{{ image.alt_text }}">
+                    <img src= "{{MEDIA_URL}}{{image.image_url}}" alt="{{ image.alt_text }}">
                 {% endfor %}
             {% else %}
                 <p>No images available</p>
@@ -66,7 +52,20 @@
             
         
       
-
+        <footer>
+            <div>
+                <p>&copy; 2023 Etenda. All rights reserved.</p>
+            </div>
+            <div>
+                <nav>
+                    <ul>
+                        <li><a href="/terms">Terms of Service</a></li>
+                        <li><a href="/privacy">Privacy Policy</a></li>
+                        <!-- Add more links as needed -->
+                    </ul>
+                </nav>
+            </div>
+        </footer>
 
     
             
