@@ -9,7 +9,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>my example page</title>
+        <title>Etenda Liquidations</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{% static "stylesheet.css" %}">
@@ -26,8 +26,10 @@
                 <a href="#about">About Us</a>
             </nav>
         </header>
-        
+
+        <div class="productContainer">
         {% if productinfo.show_onStore == True%}
+            
             <h2>{{productinfo.title_text}}</h2>
             <h3>Description</h3>
             <p>{{productinfo.description_text}}</p>
@@ -41,7 +43,7 @@
             <p>Condition: {{productinfo.get_condition_display}}</p>
             {% if productinfo.images.all %}
                 {% for image in productinfo.images.all %}
-                    <img src= "{{MEDIA_URL}}{{image.image_url}}" alt="{{ image.alt_text }}">
+                    <img src= "{{MEDIA_URL}}{{image.image_url}}" alt= "{{ image.alt_text }}">
                 {% endfor %}
             {% else %}
                 <p>No images available</p>
@@ -49,7 +51,9 @@
         {% else %}
             <h2>Product not Found</h2>
         {% endif%}
+        <div>
             
+        
         
       
         <footer>

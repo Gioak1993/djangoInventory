@@ -9,11 +9,12 @@ from django.urls import reverse
 
 class IndexView(generic.ListView):
     template_name = "products/index.html"
-    context_object_name = "latest_products_list"
+    context_object_name = "products_list"
 
     def get_queryset(self):
         """Return all the objects, in this case all the products."""
-        return ProductInfo.objects.all()
+        return ProductInfo.objects.all().order_by('-pk')
+    
 
 class DetailView(generic.DetailView):
     model = ProductInfo

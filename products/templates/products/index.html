@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
@@ -7,10 +8,11 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>my example page</title>
+        <title>Etenda Liquidations</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="{% static "indexStyle.css" %}">
+
     </head>
     <body>
 
@@ -30,18 +32,34 @@
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        {% if latest_products_list %}
-            <ul>
-            {% for product in latest_products_list %}
-                {% if product.show_onStore == True%}
-                    <li><a href="{% url 'products:detail' product.id %}">{{product.title_text}}</a></li>
-                {% endif %}
-            {%endfor%}
-            </ul>
+        
+        {% if products_list %}
+            <div class='product-list'>
+                <ul>
+                {% for product in products_list %}
+                        {% if product.show_onStore == True%}
+                            
+                                <li>
+                                    <div class="productContainer">
+                                        
+                                        <a href="{% url 'products:detail' product.id %}">
+                                            <div class="title">{{product.title_text}}</div>
+                                            <img src="{{MEDIA_URL}}{{product.images.all.0.image_url}}" alt="{{ product.images.all.0.alt_text}}">
+                                        </a>
+                                    </div>
+                                </li>
+                            
+                        {% endif %}
+                    
+                {% endfor %} 
+                </ul>
+            </div>
         {%else%}
             <p> No products available </p>
         {%endif%}
-    
+        
+
+
         <footer>
             <div>
                 <p>&copy; 2023 Your Website. All rights reserved.</p>

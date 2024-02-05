@@ -1,0 +1,59 @@
+header{
+    text-align: center;
+}
+
+.product-list{
+    width: 80%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+.product-list ul{
+    list-style-type: none;
+    text-align: center;
+    float: right;
+}
+
+.product-list ul li{
+    float: left;
+}
+
+.productContainer{
+    
+    height: 350px;
+    width: 350px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    padding: 5px;
+    margin: 10px;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+
+    
+}
+
+.productContainer img{
+
+    align-items: center;
+    max-width: 70%;
+    max-height: 70%; /* Ensure the image doesn't exceed the height of the container */
+    padding: 5px;
+    margin: 2px;
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the image using translate */
+}
+
+.productContainer .title{
+    overflow: hidden;
+    text-overflow: ellipsis; /* Add ellipsis (...) for hidden overflow */
+    white-space: nowrap; /* Prevent title from wrapping */
+    max-width: 100%; /* Set a maximum width for the title */
+    text-align: center;
+}
