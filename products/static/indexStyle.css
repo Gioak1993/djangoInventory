@@ -68,6 +68,15 @@ header{
     
 }
 
+.productContainer span{
+  
+  position: absolute;
+  top: 93%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  padding: 10px;
+}
+
 footer{
     position:relative;
     width:100%;

@@ -26,3 +26,6 @@ def about(request):
 def contact(request):
     return render(request, "products/contact.html", {})
 
+def home(request):
+    return render(request, "products/home.html", {})
+
