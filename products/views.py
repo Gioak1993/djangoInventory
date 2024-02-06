@@ -20,3 +20,9 @@ class DetailView(generic.DetailView):
     model = ProductInfo
     template_name = "products/detail.html"
 
+def about(request):
+    return render(request, "products/about.html", {}) #products/about its the path on the file, not the url
+
+def contact(request):
+    return render(request, "products/contact.html", {})
+

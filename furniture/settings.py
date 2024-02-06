@@ -148,19 +148,19 @@ AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL =  None
 AWS_S3_VERITY = True
 
-
-STORAGES = {
-    "default": {
-        "BACKEND": "storages.backends.s3.S3Storage",
-        "OPTIONS": {
-            "location": "media",
-        },
-    },    
-    "staticfiles": {
-        "BACKEND": "storages.backends.s3.S3Storage",
-        "OPTIONS": {
-            "location": "static",
-        },
-    },    
-}
+# comment if you need to make changes locally, uncomment before runing the collecstatics
+# STORAGES = {
+#     "default": {
+#         "BACKEND": "storages.backends.s3.S3Storage",
+#         "OPTIONS": {
+#             "location": "media",
+#         },
+#     },    
+#     "staticfiles": {
+#         "BACKEND": "storages.backends.s3.S3Storage",
+#         "OPTIONS": {
+#             "location": "static",
+#         },
+#     },    
+# }
 
