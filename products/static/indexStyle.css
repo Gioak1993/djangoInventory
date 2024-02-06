@@ -1,24 +1,27 @@
+body{
+    min-height: 100%;
+    font-family: Open Sans,Arial,sans-serif;
+}
+
 header{
     text-align: center;
 }
 
 .product-list{
-    width: 80%;
-    display:flex;
-    justify-content: center;
-    align-items: center;
+    width: 100%;
 
 }
-
-
 .product-list ul{
     list-style-type: none;
+    padding: 20px;
+    margin: 10px auto;
     text-align: center;
-    float: right;
 }
 
 .product-list ul li{
-    float: left;
+    display: inline-flex;
+    margin: 0 auto;
+    padding: 15px;
 }
 
 .productContainer{
@@ -28,11 +31,14 @@ header{
     border-style: solid;
     border-width: 1px;
     border-color: black;
+    border-radius: 5p;
     padding: 5px;
     margin: 10px;
     text-align: center;
     overflow: hidden;
     position: relative;
+    border-radius: 20px;
+    box-shadow: 1px 1px 10px;
 
     
 }
@@ -48,6 +54,7 @@ header{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%); /* Center the image using translate */
+    
 }
 
 .productContainer .title{
@@ -56,4 +63,18 @@ header{
     white-space: nowrap; /* Prevent title from wrapping */
     max-width: 100%; /* Set a maximum width for the title */
     text-align: center;
+    padding: 10px;
+    color: black;
+    
+}
+
+footer{
+    position:relative;
+    width:100%;
+    bottom:0;
+    background-color: gray;
+    color: white;
+    text-align: center;
+    display: flex;
+
 }
