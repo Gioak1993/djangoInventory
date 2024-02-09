@@ -10,6 +10,7 @@ from django.urls import reverse
 class IndexView(generic.ListView):
     template_name = "products/index.html"
     context_object_name = "products_list"
+    paginate_by = 15
 
     def get_queryset(self):
         """Return all the objects, in this case all the products."""

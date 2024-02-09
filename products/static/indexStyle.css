@@ -68,6 +68,8 @@ header{
     
 }
 
+
+
 .productContainer span{
   
   position: absolute;
@@ -75,6 +77,13 @@ header{
   left: 50%;
   transform: translate(-50%,-50%);
   padding: 10px;
+  color: black;
+}
+
+.pagination{
+    position: relative;
+    text-align: center;
+    bottom: 20px;
 }
 
 footer{
