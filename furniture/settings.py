@@ -79,16 +79,17 @@ WSGI_APPLICATION = "furniture.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
+# WHEN USING A TEST, CHANGE THE NAME TO EG: DB_NAME_TEST
 
 DATABASES = {
   'default': {
     'ENGINE': 'django_psdb_engine',
-    'NAME': os.environ.get('DB_NAME'),
-    'HOST': os.environ.get('DB_HOST'),
-    'PORT': os.environ.get('DB_PORT'),
-    'USER': os.environ.get('DB_USER'),
-    'PASSWORD': os.environ.get('DB_PASSWORD'),
-    'OPTIONS': {'ssl': {'ca': os.environ.get('MYSQL_ATTR_SSL_CA')}}
+    'NAME': os.environ.get('DB_NAME_TEST'),
+    'HOST': os.environ.get('DB_HOST_TEST'),
+    'PORT': os.environ.get('DB_PORT_TEST'),
+    'USER': os.environ.get('DB_USER_TEST'),
+    'PASSWORD': os.environ.get('DB_PASSWORD_TEST'),
+    'OPTIONS': {'ssl': {'ca': os.environ.get('MYSQL_ATTR_SSL_CA_TEST')}}
   }
 }
 

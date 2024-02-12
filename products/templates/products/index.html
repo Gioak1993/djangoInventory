@@ -32,7 +32,14 @@
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        
+          
+        <div class="search-container">
+        <form action="{% url 'products:search' %}" method="get">
+            <input class='search-input' name="q" type="text" placeholder="Search...">
+            <button type="submit" class="search-button">Search</button>
+          </form>
+        </div>
+
         {% if products_list %}
             <div class='product-list'>
                 <ul>

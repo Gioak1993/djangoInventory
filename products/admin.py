@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import ProductInfo, Images
+from .models import ProductInfo, Images, Category
 
 # Register your models here.
 
@@ -10,7 +10,7 @@ class ImagesInLine(admin.StackedInline):
 class ProductAdmin(admin.ModelAdmin):
     fieldsets = [
         (None, {"fields": ["title_text", "description_text", "condition", "price_number"]}),
-        ("Item Specifics", {"fields": ["sku_text", "upc_text", "cost_number" ]}),
+        ("Item Specifics", {"fields": ["sku_text", "upc_text", "cost_number", "category"]}),
         ("Location", {"fields" : ["storage_number", "rack_number", "item_number"]}),
         ("Sold and Show In Store", {"fields": ["show_onStore", "sold"]})
 
@@ -24,3 +24,4 @@ class ProductAdmin(admin.ModelAdmin):
     
 
 admin.site.register(ProductInfo, ProductAdmin)
+admin.site.register(Category)

@@ -19,6 +19,12 @@ from django.db import models
 
 '''
 
+class Category(models.Model):
+    name_text = models.CharField("Category Name", max_length= 75)
+
+    def __str__(self):
+        return self.name_text
+
 class ProductInfo (models.Model):
 
     title_text = models.CharField ("Title" , max_length = 200)
@@ -40,6 +46,7 @@ class ProductInfo (models.Model):
     item_number = models.IntegerField("Item number", default = 0)
     show_onStore = models.BooleanField("Show in store?",default = True)
     sold = models.BooleanField("Has been sold?",default = False)
+    category = models.ManyToManyField(Category)
     
 
 
@@ -54,3 +61,4 @@ class Images(models.Model):
     image_url = models.ImageField()
     alt_text = models.CharField(max_length=255)
     onProduct = models.ForeignKey(ProductInfo, related_name = "images", on_delete= models.CASCADE)
+

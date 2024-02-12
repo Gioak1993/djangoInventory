@@ -1,7 +1,10 @@
+from typing import Any
+from django.db.models.query import QuerySet
 from django.shortcuts import get_object_or_404, render
 from .models import ProductInfo
 from django.views import generic
 from django.urls import reverse
+from django.db.models import Q
 
 
 # Create your views here.
@@ -29,4 +32,18 @@ def contact(request):
 
 def home(request):
     return render(request, "products/home.html", {})
+
+
+class SearchResultsView(generic.ListView):
+    model = ProductInfo
+    template_name = "products/search.html"
+
+    def get_queryset(self) -> QuerySet[Any]:
+        query = self.request.GET.get("q")
+        object_list = ProductInfo.objects.filter(Q(title_text__icontains= query) | Q(category__name_text__icontains = query))
+
+        return object_list
+    
+
+
 
