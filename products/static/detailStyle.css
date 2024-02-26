@@ -1,12 +1,13 @@
 body{
     min-height: 100%;
-    font-family: Open Sans,Arial,sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 header{
     text-align: center;
     width: 100%;
-    background-color: rgb(233, 233, 233);
+    background-color:indianred;
+    color: white;
 }
 
 header span{
@@ -16,19 +17,20 @@ header span{
 .sub-header{
     /* border-style: dashed; */
     border-color: black;
-    background-color: rgb(233, 233, 233);
     display: flex;
     padding: 20px;
 }
 
 .sub-header nav{
     width: 60%;
+    position: relative;
+    top: 5px;
 }
 
 .sub-header > nav a{
     padding: 20px;
     text-decoration: none;
-    color: black;
+    color: white;
 }
 
 
@@ -43,11 +45,15 @@ header span{
 
 .search-input{
     width: 70%;
+    border-radius: 10px;
+    padding: 10px;
 
 }
 
 .search-button{
     width: 10%;
+    border-radius: 10px;
+    padding: 10px;
 
 }
 
@@ -58,6 +64,7 @@ h1 {
 
 #description p{
     text-align: justify;
+    width: 95%;
 }
 
 .Price span{
