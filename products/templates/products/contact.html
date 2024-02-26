@@ -17,13 +17,21 @@
     <body>
 
         <header>
-            <h1>Etenda Liquidations</h1>
-            <nav>
-                <a href="{% url 'products:home'%}">Home</a>
-                <a href="{% url 'products:index'%}">Products</a>
-                <a href="{% url 'products:contact'%}">Contact Us</a>
-                <a href="{% url 'products:about'%}">About Us</a>
-            </nav>
+            <span>Etenda Liquidations</span>
+            <div class='sub-header'>
+                <nav>
+                    <a href="{% url 'products:home'%}">Home</a>
+                    <a href="{% url 'products:index'%}">Products</a>
+                    <a href="{% url 'products:contact'%}">Contact Us</a>
+                    <a href="{% url 'products:about'%}">About Us</a>
+                </nav>
+                <div class="search-container">
+                    <form action="{% url 'products:search' %}" method="get">
+                        <input class='search-input' name="q" type="text" placeholder="Search...">
+                        <button type="submit" class="search-button">&#x1F50E;</button>
+                    </form>
+                </div>
+            </div>
         </header>
 
         <h1> Contact Us</h1>

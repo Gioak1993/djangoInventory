@@ -5,20 +5,112 @@ body{
 
 header{
     text-align: center;
+    width: 100%;
+    background-color: rgb(233, 233, 233);
+}
+
+header span{
+    font-size: 2em;
+}
+
+.sub-header{
+    /* border-style: dashed; */
+    border-color: black;
+    background-color: rgb(233, 233, 233);
+    display: flex;
+    padding: 20px;
+}
+
+.sub-header nav{
+    width: 60%;
+}
+
+.sub-header > nav a{
+    padding: 20px;
+    text-decoration: none;
+    color: black;
+}
+
+
+.search-container{
+    width: 40%;
+}
+
+.search-container form{
+    position: relative;
+
+}
+
+.search-input{
+    width: 70%;
+
+}
+
+.search-button{
+    width: 10%;
+
 }
 
 h1 {
-    color: red;
+    color: black;
     text-align: center;
 }
 
-img {
-    width: 15em;
-    height: 15em;
-
+#description p{
+    text-align: justify;
 }
 
 .Price span{
 
     color: purple;
 }
+
+.gallery-container{
+    position: relative;
+    width: 100%;
+}
+
+#main-image{
+    padding: 2px;
+    width: 400px;
+    height: 400px;
+    justify-content: center;
+    display: flex;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5px;
+}
+
+#main-image img{
+    width: 100%;
+   
+}
+
+.gallery-scrollable{
+    width: 90%;
+    padding: 5px;
+    display: flex;
+    overflow-x: scroll;
+    white-space: nowrap;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+.image-container{
+    width: 100%;
+    min-width: 200px;
+    height: 200px;
+    padding: 5px;
+    display: flex;
+    cursor: pointer;
+    overflow: hidden;
+}    
+
+.image-container img{
+    width: 100%;
+    margin: auto;
+    object-fit: contain;
+}
+

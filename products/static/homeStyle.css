@@ -51,22 +51,25 @@ header span{
 
 }
 
-.product-list{
-    width: 100%;
-
+div.scrollmenu {
+    background-color: #ffffff;
+    overflow: auto;
+    white-space: nowrap;
 }
-.product-list ul{
-    list-style-type: none;
-    padding: 20px;
-    margin: 10px auto;
+  
+div.scrollmenu li {
+    display: inline-block;
+    color: white;
     text-align: center;
+    padding: 14px;
+    text-decoration: none;
+}
+  
+div.scrollmenu li:hover {
+    border-color: #ffffff;
 }
 
-.product-list ul li{
-    display: inline-flex;
-    margin: 0 auto;
-    padding: 15px;
-}
+
 
 .productContainer{
     
@@ -122,12 +125,6 @@ header span{
   transform: translate(-50%,-50%);
   padding: 10px;
   color: black;
-}
-
-.pagination{
-    position: relative;
-    text-align: center;
-    bottom: 20px;
 }
 
 footer{

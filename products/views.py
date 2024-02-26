@@ -19,6 +19,15 @@ class IndexView(generic.ListView):
         """Return all the objects, in this case all the products."""
         return ProductInfo.objects.all().order_by('-pk')
     
+#view for the home
+    
+class HomeView(generic.ListView):
+    template_name = "products/home.html"
+    context_object_name = "latest_products"
+
+    def get_queryset(self):
+        """Return all the objects, in this case all the products."""
+        return ProductInfo.objects.all().order_by('-pk')[:5]
 
 class DetailView(generic.DetailView):
     model = ProductInfo
@@ -44,6 +53,4 @@ class SearchResultsView(generic.ListView):
 
         return object_list
     
-
-
 

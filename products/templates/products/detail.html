@@ -17,21 +17,31 @@
     <body>
 
         <header>
-            <h1>Etenda Liquidations</h1>
-            <nav>
-                <a href="{% url 'products:home'%}">Home</a>
-                <a href="{% url 'products:index'%}">Products</a>
-                <a href="{% url 'products:contact'%}">Contact Us</a>
-                <a href="{% url 'products:about'%}">About Us</a>
-            </nav>
+            <span>Etenda Liquidations</span>
+            <div class='sub-header'>
+                <nav>
+                    <a href="{% url 'products:home'%}">Home</a>
+                    <a href="{% url 'products:index'%}">Products</a>
+                    <a href="{% url 'products:contact'%}">Contact Us</a>
+                    <a href="{% url 'products:about'%}">About Us</a>
+                </nav>
+                <div class="search-container">
+                    <form action="{% url 'products:search' %}" method="get">
+                        <input class='search-input' name="q" type="text" placeholder="Search...">
+                        <button type="submit" class="search-button">&#x1F50E;</button>
+                    </form>
+                </div>
+            </div>
         </header>
 
         
         {% if productinfo.show_onStore == True%}
             
-            <h2>{{productinfo.title_text}}</h2>
+            <h1>{{productinfo.title_text}}</h1>
             <h3>Description</h3>
+            <div id='description'>
             <p>{{productinfo.description_text}}</p>
+            </div>
             <div class="Price">
                 {% if productinfo.sold == False %}
                     <span>Price {{productinfo.price_number}}</span>
@@ -41,9 +51,18 @@
             </div>
             <p>Condition: {{productinfo.get_condition_display}}</p>
             {% if productinfo.images.all %}
+                <div class='gallery-container'>
+                    <div id='main-image'>
+                        <img src="{{MEDIA_URL}}{{productinfo.images.all.0.image_url}}" alt= "{{ productinfo.images.all.0.alt_text}}" onclick="fullSizePic('{{MEDIA_URL}}{{productinfo.images.all.0.image_url}}')">
+                    </div>
+                    <div class='gallery-scrollable'>
                 {% for image in productinfo.images.all %}
-                    <img src= "{{MEDIA_URL}}{{image.image_url}}" alt= "{{ image.alt_text }}">
+                    <div class='image-container'>    
+                        <img src= "{{MEDIA_URL}}{{image.image_url}}" alt= "{{ image.alt_text }}" onclick="changeMainImage('{{MEDIA_URL}}{{image.image_url}}')">
+                    </div>
                 {% endfor %}
+                    </div>
+                </div>
             {% else %}
                 <p>No images available</p>
             {% endif %}
@@ -69,6 +88,7 @@
             </div>
         </footer> 
         
-        <script src="" async defer></script>
+        <script type="text/javascript" src="{% static "detail.js" %}" async defer></script>
+
     </body>
 </html>
