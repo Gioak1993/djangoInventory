@@ -109,6 +109,8 @@ header span{
         color: #818181;
         display: block;
         transition: 0.3s;
+        position: relative;
+        right: 10px;
     }
 
     .sub-header > .sidebar nav a img{
