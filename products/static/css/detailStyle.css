@@ -36,7 +36,15 @@ h1 {
 }
 
 #main-image img{
-    width: 100%;
+    align-items: center;
+    max-width: 70%;
+    max-height: 70%; /* Ensure the image doesn't exceed the height of the container */
+    padding: 5px;
+    margin: 2px;
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the image using translate */
    
 }
 
@@ -62,9 +70,15 @@ h1 {
 }    
 
 .image-container img{
-    width: 100%;
-    margin: auto;
-    object-fit: contain;
+    align-items: center;
+    max-width: 100%;
+    max-height: 100%; /* Ensure the image doesn't exceed the height of the container */
+    padding: 5px;
+    margin: 2px;
+    position:relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the image using translate */
 }
 
 @media screen and (max-width:767px){ 
