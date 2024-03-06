@@ -3,7 +3,7 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!<![endif]-->
 <html>
     <head>
         <meta charset="utf-8">
@@ -11,29 +11,24 @@
         <title>LocalxDeal</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{% static "css/indexStyle.css" %}">  <!--need to make the search style!-->
+        <link rel="stylesheet" href="{% static "css/contactStyle.css" %}">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:ital">
 
     </head>
     <body>
+{% include 'products/components/header.html'%}
 
-    {% include "products/components/header.html" %}
+<h2> Success </h2>
+<p>We received your message and will reply in a few hours, please check your spam folder</p>
+<p> If you want to add more details use this link to go back to the contact page </p>
 
-<h1>Search Results</h1>
-
-{% if object_list%}
-    <ul>
-    {% for product in object_list %}
-        <li>
-        <a href={% url 'products:detail' product.id%}>
-        {{ product.title_text }}, {{ product.price_number }}
+    <div class="form-actions">
+      
+        <a href="{%url 'contactapp:contact'%}">
+        <button type="submit">Go back to Contact</button>
         </a>
-        </li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <span> No items found</span>
-{% endif %}
+      
+    </div>
 
 <footer>
     <div>
@@ -46,6 +41,7 @@
             <!-- Add more links as needed -->
         </ul>
     </div>
+    
 </footer> 
 
 <script src="{% static "javascript/index.js" %}" async defer></script>

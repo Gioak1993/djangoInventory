@@ -3,23 +3,23 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!<![endif]-->
 <html>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Etenda Liquidations</title>
+        <title>LocalxDeal</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{% static "css/detailStyle.css" %}">
-
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:ital">
     </head>
     <body>
 
         {% include "products/components/header.html" %}
 
         
-        {% if productinfo.show_onStore == True%}
+        {% if productinfo.show_onstore == True%}
             
             <h1>{{productinfo.title_text}}</h1>
             <h3>Description</h3>
@@ -28,7 +28,7 @@
             </div>
             <div class="Price">
                 {% if productinfo.sold == False %}
-                    <span>Price {{productinfo.price_number}}</span>
+                    <span>Price &#36;{{productinfo.price_number}}</span>
                 {% else %}
                     <span>Sold Out!</span>
                 {% endif %}

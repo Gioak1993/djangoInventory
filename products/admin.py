@@ -12,7 +12,7 @@ class ProductAdmin(admin.ModelAdmin):
         (None, {"fields": ["title_text", "description_text", "condition", "price_number"]}),
         ("Item Specifics", {"fields": ["sku_text", "upc_text", "cost_number", "category"]}),
         ("Location", {"fields" : ["storage_number", "rack_number", "item_number"]}),
-        ("Sold and Show In Store", {"fields": ["show_onStore", "sold"]})
+        ("Sold and Show In Store", {"fields": ["show_onstore", "sold"]})
 
     ]
     list_display = ["title_text", "condition", "storage_number"]

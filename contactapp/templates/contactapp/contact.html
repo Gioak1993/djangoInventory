@@ -3,15 +3,16 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!<![endif]-->
 <html>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Etenda Liquidations</title>
+        <title>LocalxDeal</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{% static "css/indexStyle.css" %}">
+        <link rel="stylesheet" href="{% static "css/contactStyle.css" %}">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:ital">
 
     </head>
     <body>
@@ -27,6 +28,17 @@
         Connect with us on social media to stay updated on the latest deals, new arrivals, and our community initiatives.
         
         Welcome to the family! </p>
+
+        <form method="post">
+            {% csrf_token %}
+            
+            {{ form }}
+            
+            <div class="form-actions">
+              <button type="submit">Send</button>
+            </div>
+        </form>
+
         <footer>
             <div>
                 <p>&copy; 2024 Etenda.</p>
@@ -38,6 +50,7 @@
                     <!-- Add more links as needed -->
                 </ul>
             </div>
+            
         </footer> 
         
         <script src="{% static "javascript/index.js" %}" async defer></script>

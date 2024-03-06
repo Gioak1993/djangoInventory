@@ -1,0 +1,27 @@
+body{
+    min-height: 100%;
+    font-family: "Lato", sans-serif;
+}
+
+#id_email,
+#id_subject,
+#id_message{
+    font-family: inherit;
+    width: 300px;
+    padding: 5px;
+    margin: 5px;
+}
+
+label[for="id_message"],
+label[for="id_email"],
+label[for="id_subject"]{
+    margin-top: 1px;
+    display: flex;
+}
+
+.form-actions button{
+    font-family: inherit;
+    width: auto;
+    padding: 5px;
+    margin: 5px;
+}

@@ -3,7 +3,7 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!<![endif]-->
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -11,10 +11,11 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Etenda Liquidations</title>
+        <title>LocalxDeal</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{% static "css/indexStyle.css" %}">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:ital">
 
     </head>
     <body>
@@ -26,22 +27,17 @@
         {% if products_list %}
             <div class='product-list'>
                 <ul>
-                {% for product in products_list %}
-                        {% if product.show_onStore == True%}
+                {% for product in products_list %}    
+                    <li>
+                        <div class="productContainer">
                             
-                                <li>
-                                    <div class="productContainer">
-                                        
-                                        <a href="{% url 'products:detail' product.id %}" style="text-decoration:none">
-                                            <div class="title">{{product.title_text}}</div>
-                                            <img loading='lazy' src="{{MEDIA_URL}}{{product.images.all.0.image_url}}" alt="{{ product.images.all.0.alt_text}}">
-                                            <span> ${{product.price_number}} </span>
-                                        </a>
-                                    </div>
-                                </li>
-                            
-                        {% endif %}
-                    
+                            <a href="{% url 'products:detail' product.id %}" style="text-decoration:none">
+                                <div class="title">{{product.title_text}}</div>
+                                <img loading='lazy' src="{{MEDIA_URL}}{{product.images.all.0.image_url}}" alt="{{ product.images.all.0.alt_text}}">
+                                <span> ${{product.price_number}} </span>
+                            </a>
+                        </div>
+                    </li>
                 {% endfor %} 
                 </ul>
             </div>

@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "storages",
+    "contactapp",
 
 ]
 
@@ -164,4 +165,25 @@ STORAGES = {
         },
     },    
 }
+
+
+#for local development use console,
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'resend'
+EMAIL_HOST = 'smtp.resend.com'
+DEFAULT_FROM_EMAIL = "contact@localxdeal.com"
+#create a list for the emails to be forwarded to, we dont use them directly so it can be 
+#confidential, they are stored as a string on a enviromental variable,
+#comma separated
+notify_to = []
+emaillist= os.environ.get('NOTIFY_EMAIL')
+emaillist = emaillist.split(',')
+for email in emaillist:
+    notify_to.append(email)
+NOTIFY_EMAIL = notify_to
+##
+EMAIL_HOST_PASSWORD = os.environ.get('RESEND_API_KEY')
+EMAIL_USE_TLS = True
+
 

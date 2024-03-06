@@ -1,6 +1,6 @@
 body{
     min-height: 100%;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: "Lato", sans-serif;
 }
  
 h1 {
@@ -15,7 +15,9 @@ h1 {
 
 .Price span{
 
-    color: purple;
+    color: #a41616;
+    font-weight: 900;
+    font-size:xx-large;
 }
 
 .gallery-container{

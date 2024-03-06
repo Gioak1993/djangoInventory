@@ -16,8 +16,9 @@ class IndexView(generic.ListView):
     paginate_by = 15
 
     def get_queryset(self):
-        """Return all the objects, in this case all the products."""
-        return ProductInfo.objects.all().order_by('-pk')
+        """Return the objects that are set as show_onstore = TRUE on the database"""
+        return ProductInfo.objects.filter(show_onstore=True).order_by('-pk')
+        
     
 #view for the home
     
@@ -26,8 +27,8 @@ class HomeView(generic.ListView):
     context_object_name = "latest_products"
 
     def get_queryset(self):
-        """Return all the objects, in this case all the products."""
-        return ProductInfo.objects.all().order_by('-pk')[:5]
+        """Return all the objects that are set as show_onstore = TRUE on the database"""
+        return ProductInfo.objects.filter(show_onstore=True).order_by('-pk')[:5]
 
 class DetailView(generic.DetailView):
     model = ProductInfo

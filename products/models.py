@@ -28,7 +28,7 @@ class Category(models.Model):
 class ProductInfo (models.Model):
 
     title_text = models.CharField ("Title" , max_length = 200)
-    description_text = models.TextField ("Description", default = 'Insert a Description' ,max_length = 5000)
+    description_text = models.TextField ("Description", max_length = 5000)
     sku_text = models.CharField ("SKU", default = 'noSku', max_length = 20)
     upc_text = models.CharField ("UPC", default = 'noUpc', max_length = 15)
     cost_number = models.FloatField ("Cost", default = 0)
@@ -44,7 +44,7 @@ class ProductInfo (models.Model):
     storage_number = models.IntegerField("Storage Number", default = 0)
     rack_number = models.IntegerField("Rack number",default = 0)
     item_number = models.IntegerField("Item number", default = 0)
-    show_onStore = models.BooleanField("Show in store?",default = True)
+    show_onstore = models.BooleanField("Show in store?",default = True)
     sold = models.BooleanField("Has been sold?",default = False)
     category = models.ManyToManyField(Category)
     
