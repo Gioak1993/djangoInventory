@@ -2,78 +2,6 @@ body{
     min-height: 100%;
     font-family: "Lato", sans-serif;
 }
-
-header{
-    text-align: center;
-    width: 100%;
-    background-color:indianred;
-    color: white;
-}
-
-header span{
-    font-size: 2em;
-}
-
-.sub-header{
-
-    border-color: black;
-    display: flex;
-    padding: 20px;
-}
-
-.sub-header nav{
-    font-size: 0.9rem;
-    width: 60%;
-    position: relative;
-    top: -10px;
-    text-align: left;
-}
-
-.sub-header > nav > a img{
-    width:40px;
-    position: relative;
-    top: 10px;
-}
-
-.sub-header > nav a{
-    padding: 20px;
-    text-decoration: none;
-    color: white;
-}
-
-
-.search-container{
-    width: 40%;
-}
-
-.search-container form{
-    position: relative;
-
-}
-
-.search-input{
-    width: 70%;
-    border-radius: 10px;
-    padding: 10px;
-
-}
-
-.search-button{
-    width: 10%;
-    border-radius: 10px;
-    padding: 10px;
-
-}
-
-.sub-header > .sidebar{
-    display: none;
-    position: absolute;
-}
-
-.sub-header > #main{
-    display: none;
-}
-
 div.scrollmenu {
     background-color: #ffffff;
     overflow: auto;
@@ -91,8 +19,6 @@ div.scrollmenu li {
 div.scrollmenu li:hover {
     border-color: #ffffff;
 }
-
-
 
 .productContainer{
     

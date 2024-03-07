@@ -168,7 +168,7 @@ STORAGES = {
 
 
 #for local development use console,
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'resend'
 EMAIL_HOST = 'smtp.resend.com'

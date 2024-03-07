@@ -1,0 +1,12 @@
+{%load static%}
+<link rel="stylesheet" href="{% static "css/contactStyle.css" %}">
+
+<form method="post">
+    {% csrf_token %}
+    
+    {{ form.as_p }}
+    
+    <div class="form-actions">
+      <button type="submit">Sent</button>
+    </div>
+</form>

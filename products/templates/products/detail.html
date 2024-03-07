@@ -54,23 +54,12 @@
             <h2>Product not Found</h2>
         {% endif%}
         
-            
+        <h4 style="text-align:center;background-color:#d2d3d5;padding: 20px;font-size: 1.2em;"> Contact us about this product </h4>
         
-        
-      
+        {%include '../contactapp/aboutproduct.html'%}
 
-        <footer>
-            <div>
-                <p>&copy; 2024 Etenda.</p>
-            </div>
-            <div>
-                <ul>
-                    <li><a href="/terms">Terms of Service</a></li>
-                    <li><a href="/privacy">Privacy Policy</a></li>
-                    <!-- Add more links as needed -->
-                </ul>
-            </div>
-        </footer> 
+        {%include "products/components/footer.html"%}
+      
         
         <script type="text/javascript" src="{% static "javascript/detail.js" %}" async defer></script>
 
