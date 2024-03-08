@@ -1,0 +1,26 @@
+#brand{
+    margin-left: 30px;
+    padding: 10px;
+}
+
+.footer-links > ul{
+    list-style-type: none;
+}
+
+.footer-links > ul > li > a{
+    color: white;
+    text-decoration-line: none;
+
+}
+
+footer{
+    position:relative;
+    width:100%;
+    bottom:0;
+    background-color: #393939;
+    color: white;
+    text-align: center;
+    display: flex;
+    text-decoration: none;
+
+}
