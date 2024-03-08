@@ -151,20 +151,20 @@ AWS_DEFAULT_ACL =  None
 AWS_S3_VERITY = True
 
 # comment if you need to make changes locally, uncomment before runing the collecstatics
-# STORAGES = {
-#     "default": {
-#         "BACKEND": "storages.backends.s3.S3Storage",
-#         "OPTIONS": {
-#             "location": "media",
-#         },
-#     },    
-#     "staticfiles": {
-#         "BACKEND": "storages.backends.s3.S3Storage",
-#         "OPTIONS": {
-#             "location": "static",
-#         },
-#     },    
-# }
+STORAGES = {
+    "default": {
+        "BACKEND": "storages.backends.s3.S3Storage",
+        "OPTIONS": {
+            "location": "media",
+        },
+    },    
+    "staticfiles": {
+        "BACKEND": "storages.backends.s3.S3Storage",
+        "OPTIONS": {
+            "location": "static",
+        },
+    },    
+}
 
 
 #for local development use console,
