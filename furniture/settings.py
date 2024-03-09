@@ -84,13 +84,12 @@ WSGI_APPLICATION = "furniture.wsgi.application"
 
 DATABASES = {
   'default': {
-    'ENGINE': 'django_psdb_engine',
-    'NAME': os.environ.get('DB_NAME_TEST'),
-    'HOST': os.environ.get('DB_HOST_TEST'),
-    'PORT': os.environ.get('DB_PORT_TEST'),
-    'USER': os.environ.get('DB_USER_TEST'),
-    'PASSWORD': os.environ.get('DB_PASSWORD_TEST'),
-    'OPTIONS': {'ssl': {'ca': os.environ.get('MYSQL_ATTR_SSL_CA_TEST')}}
+    'ENGINE': 'django.db.backends.mysql',
+    'NAME': os.environ.get('DB_NAME'),
+    'HOST': os.environ.get('DB_HOST'),
+    'USER': os.environ.get('DB_USER'),
+    'PASSWORD': os.environ.get('DB_PASSWORD'),
+
   }
 }
 

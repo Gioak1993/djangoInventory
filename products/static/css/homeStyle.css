@@ -2,6 +2,18 @@ body{
     min-height: 100%;
     font-family: "Lato", sans-serif;
 }
+
+#who > p {
+    font-size: 1.1em;
+    text-justify: inter-word;
+    text-align: justify;
+    padding: 10px;
+    border-color: #b35e5e;
+    border-style: double;
+    margin-left: 40px;
+    margin-right: 40px;
+
+}
 div.scrollmenu {
     background-color: #ffffff;
     overflow: auto;
