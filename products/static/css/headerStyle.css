@@ -121,10 +121,14 @@ header span{
     }
     .sub-header > .sidebar > .closebtn {
         position: absolute;
+        background-color: #111;
+        color: #818181;
         top: 0;
         right: 25px;
         font-size: 36px;
         margin-left: 50px;
+        border:none;
+        color: 
     }
 
     .openbtn {
