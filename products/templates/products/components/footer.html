@@ -1,4 +1,4 @@
-{% load static%}
+{% load static %}
 
 <link rel="stylesheet" href="{% static "css/footerStyle.css" %}">
 
@@ -6,11 +6,15 @@
     <div>
         <p id='brand'>LocalxDeal</p>
     </div>
-    <div class='footer-links'>
+
+    <div class='pick-location'>
+        <p> Local Pick up in River Grove, Illinois. Contact us <a style="color:white;" href="{% url 'contactapp:contact'%}">here</a> or in the contact us page to arrange an appointment</p>
+    </div>
+    {% comment %} <div class='footer-links'>
         <ul>
             <li><a href="/terms">Terms of Service</a></li>
             <li><a href="/privacy">Privacy Policy</a></li>
             <!-- Add more links as needed -->
         </ul>
-    </div>
+    </div> {% endcomment %}
 </footer> 

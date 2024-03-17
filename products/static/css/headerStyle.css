@@ -124,11 +124,13 @@ header span{
         background-color: #111;
         color: #818181;
         top: 0;
-        right: 25px;
+        right: 0;
+        margin-top: 3%;
+        margin-right: 1%;
         font-size: 36px;
         margin-left: 50px;
         border:none;
-        color: 
+    
     }
 
     .openbtn {

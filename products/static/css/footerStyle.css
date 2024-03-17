@@ -1,6 +1,7 @@
 #brand{
-    margin-left: 30px;
-    padding: 10px;
+    margin-left: .3rem;
+    padding: 1rem;
+    border-right-style: dashed;
 }
 
 .footer-links > ul{
@@ -23,4 +24,8 @@ footer{
     display: flex;
     text-decoration: none;
 
+}
+
+.pick-location{
+    padding: 1rem;
 }
