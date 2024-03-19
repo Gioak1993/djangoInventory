@@ -12,6 +12,7 @@ body{
     border-style: double;
     margin-left: 40px;
     margin-right: 40px;
+    border-radius: 1em;
 
 }
 div.scrollmenu {

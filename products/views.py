@@ -94,8 +94,8 @@ class SearchResultsView(generic.ListView):
 
     def get_queryset(self) -> QuerySet[Any]:
         query = self.request.GET.get("q")
-        object_list = ProductInfo.objects.filter(Q(title_text__icontains= query) | Q(category__name_text__icontains = query))
-
-        return object_list
+        object_list = ProductInfo.objects.filter(Q(title_text__icontains = query) | Q(category__name_text__icontains = query))
+        object_list_show = object_list.filter(show_onstore=True)
+        return object_list_show
     
 
