@@ -11,7 +11,8 @@
       content="Discover the {{productinfo.title_text}}, {{productinfo.description_text}}. Explore its key features, benefits, and specifications."
     />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-   <link rel="stylesheet" href="{% static "css/output.css"%}"> 
+   <link rel="stylesheet" href="{% static "css/output.css"%}">
+   <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Lato:ital"
@@ -52,7 +53,7 @@
           />
         </div>
         <div
-          class="max-w-4xl flex flex-row whitespace-nowrap overflow-x-auto mx-auto gap-3"
+          class="max-w-lg md:max-w-4xl flex flex-row whitespace-nowrap overflow-x-auto mx-auto gap-3"
         >
           {% for image in productinfo.images.all %}
           <div class="min-w-[200px] h-[200px] inline-block">

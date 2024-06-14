@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!<![endif]-->
+
 <html>
     <head>
         <meta charset="utf-8">
@@ -12,24 +9,28 @@
         
         <meta name="description" content="Get in touch with us today! Whether you have questions, feedback, or inquiries, our team is here to help. Find our contact information and a convenient form to send us a message. We look forward to hearing from you!">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{% static "css/contactStyle.css" %}">
+        <link rel="stylesheet" href="{% static "css/output.css" %}">
+        <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:ital">
-        <script>0</script>
+
+        
     </head>
-    <body>
+<body class="dark:bg-gradient-to-b dark:from-[#001d39] dark:to-black">
 {% include 'products/components/header.html'%}
 
-<h2> Success </h2>
-<p>We received your message and will reply in a few hours, please check your spam folder</p>
-<p> If you want to add more details use this link to go back to the contact page </p>
+<div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md h-[80vh]">
+<h2 class="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white"> Success </h2>
+<p class=" font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">We received your message and will reply in a few hours, please check your spam folder</p>
+<p class="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl"> If you want to add more details use this link to go back to the contact page </p>
 
-    <div class="form-actions">
+    <div class="form-actions text-center">
       
         <a href="{%url 'contactapp:contact'%}">
-        <button type="submit">Go back to Contact</button>
+        <button type="submit" class="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-blue-700 sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-blue-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Go back to Contact</button>
         </a>
       
     </div>
+</div>
 
     {%include "products/components/footer.html"%} 
 
