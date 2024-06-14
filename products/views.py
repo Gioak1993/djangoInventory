@@ -1,5 +1,6 @@
 from typing import Any
 from django.db.models.query import QuerySet
+from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404, render, redirect
 from .models import ProductInfo
 from django.views import generic
@@ -15,9 +16,11 @@ from django.conf import settings
 
 
 class IndexView(generic.ListView):
+
     template_name = "products/index.html"
     context_object_name = "products_list"
     paginate_by = 15
+        
 
     def get_queryset(self):
         """Return the objects that are set as show_onstore = TRUE on the database"""
@@ -91,6 +94,7 @@ def home(request):
 class SearchResultsView(generic.ListView):
     model = ProductInfo
     template_name = "products/search.html"
+    paginate_by = 15
 
     def get_queryset(self) -> QuerySet[Any]:
         query = self.request.GET.get("q")

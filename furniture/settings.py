@@ -41,8 +41,10 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django_browser_reload",
     "storages",
     "contactapp",
+    "compressor",
 
 ]
 
@@ -54,6 +56,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    
 ]
 
 ROOT_URLCONF = "furniture.urls"
@@ -89,6 +92,8 @@ DATABASES = {
     'HOST': os.environ.get('DB_HOST'),
     'USER': os.environ.get('DB_USER'),
     'PASSWORD': os.environ.get('DB_PASSWORD'),
+    'HOST': '127.0.0.1', #for working locally only, needs an ssh connection
+    'PORT': '3306', ###for working locally only, needs an ssh connection
 
   }
 }
@@ -166,23 +171,22 @@ STORAGES = {
 }
 
 
-#for local development use console,
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend" #for local development use console insteas "smtp"
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'resend'
 EMAIL_HOST = 'smtp.resend.com'
 DEFAULT_FROM_EMAIL = "contact@localxdeal.com"
 #create a list for the emails to be forwarded to, we dont use them directly so it can be 
-#confidential, they are stored as a string on a enviromental variable,
+#confidential, they are stored as list of a strings on a enviromental variable,
 #comma separated
 notify_to = []
 emaillist= os.environ.get('NOTIFY_EMAIL')
 emaillist = emaillist.split(',')
-for email in emaillist:
-    notify_to.append(email)
+notify_to = [email for email in emaillist]
 NOTIFY_EMAIL = notify_to
 ##
 EMAIL_HOST_PASSWORD = os.environ.get('RESEND_API_KEY')
 EMAIL_USE_TLS = True
+
 
 

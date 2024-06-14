@@ -1,58 +1,106 @@
 <!DOCTYPE html>
 {% load static %}
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!<![endif]-->
+
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>LocalxDeal</title>
-        <meta name="description" content="Explore a curated selection of high-quality items at unbeatable prices. Discover great deals on a variety of products without compromising on quality. Shop now for incredible savings!">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{% static "css/homeStyle.css" %}">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:ital">
-        <script>0</script>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>LocalxDeal</title>
+    <meta
+      name="description"
+      content="Explore a curated selection of high-quality items at unbeatable prices. Discover great deals on a variety of products without compromising on quality. Shop now for incredible savings!"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="{% static "css/output.css" %}">
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Lato:ital"
+    />
+    <script is:inline>
+      // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+      if (
+        localStorage.getItem("color-theme") === "dark" ||
+        (!("color-theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
+  </head>
+  <body class="dark:bg-gradient-to-b dark:from-[#001d39] dark:to-black">
+    {% include "products/components/header.html" %}
 
-    </head>
-    <body>
+    <div class="p-2 max-w-screen-md mx-auto my-8" id="who">
+      <h2
+        class="text-center text-4xl md:text-6xl lg:text-8xl font-extrabold mb-4 dark:text-white"
+      >
+        Awesome Deals!
+      </h2>
+      <p
+        class="px-5 mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-300"
+      >
+        If you're in the <span class="font-bold">Chicagoland Area</span>, we've
+        got something special just for you! We're a small marketplace offering
+        open-box and slightly used items at unbeatable prices. While some boxes
+        may show signs of wear, rest assured that every product undergoes
+        thorough inspection before it reaches you, ensuring top-notch quality.
+        Reach out to us via our contact page, and we'll gladly arrange a meeting
+        to help you find the perfect items.
+      </p>
+    </div>
 
+    <section class="my-10">
+      <h2
+        class="ml-2 font-bold text-2xl md:text-4xl p-2 md:p-4 dark:text-white"
+      >
+        Our lastest arrivals
+      </h2>
+      {% if latest_products %}
+      <ul class="h-[32rem] whitespace-nowrap overflow-x-auto">
+        {% for product in latest_products %}
 
+        <li class="w-[350px] h-96 p-6 inline-block">
+          <div
+            class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-slate-950 dark:border-gray-700"
+          >
+            <a
+              href="{% url 'products:detail' product.id %}"
+              style="text-decoration: none"
+            >
+              <img
+                class="mx-auto w-72 h-72 p-8 rounded-t-lg"
+                src="{{MEDIA_URL}}{{product.images.all.0.image_url}}"
+                alt="{{ product.images.all.0.alt_text}}"
+              />
+            </a>
+            <div class="whitespace-normal h-24 px-5 pb-5 min-w-0">
+              <a href="{% url 'products:detail' product.id %}">
+                <h3
+                  class="line-clamp-3 overflow-y-hidden h-22 text-xl font-semibold tracking-tight text-gray-900 dark:text-white"
+                >
+                  {{product.title_text}}
+                </h3>
+              </a>
+            </div>
+            <div class="flex items-center justify-between p-3">
+              <span class="text-3xl font-bold text-gray-900 dark:text-white"
+                >$ {{product.price_number}}</span
+              >
+              <a
+                href="{% url 'products:detail' product.id %}"
+                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                >See More</a
+              >
+            </div>
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </section>
 
-        {% include "products/components/header.html" %}
-
-        <div id='who'>
-        <h2> Who are we </h2>
-        <p> If you're in the Chicagoland Area, we've got something special just for you! We're a small marketplace offering open-box and slightly used items at unbeatable prices. While some boxes may show signs of wear, rest assured that every product undergoes thorough inspection before it reaches you, ensuring top-notch quality. Reach out to us via our contact page, and we'll gladly arrange a meeting to help you find the perfect items.</p>
-        </div>
-
-        <h2> Our lastest arrivals </h2>
-
-        {% if latest_products %}
-        <div class="scrollmenu">
-        <ul>
-            {% for product in latest_products %}
-
-                <li>
-                    <div class="productContainer">
-                        
-                        <a href="{% url 'products:detail' product.id %}" style="text-decoration:none">
-                            <div class="title">{{product.title_text}}</div>
-                            <img loading='lazy' src="{{MEDIA_URL}}{{product.images.all.0.image_url}}" alt="{{ product.images.all.0.alt_text}}">
-                            <span> ${{product.price_number}} </span>
-                        </a>
-                    </div>
-                </li>
-
-            {% endfor %} 
-            </ul>
-        </div>
-        {% endif %}
-
-
-        {%include "products/components/footer.html"%} 
-        
-        
-    </body>
+    {%include "products/components/footer.html"%}
+  </body>
 </html>

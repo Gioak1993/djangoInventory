@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+
 <html>
     <head>
         <meta charset="utf-8">
@@ -11,36 +8,67 @@
         <title>LocalxDeal</title>
         <meta name="description" content="Search results tailored to your query. Explore a wide range of products, and resources matching your search terms. Discover the information you're looking for quickly and easily.">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{% static "css/indexStyle.css" %}">  <!--need to make the search style!-->
+        <link rel="stylesheet" href="{% static "css/output.css" %}">  
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:ital">
-        <script>0</script>
+        
+        
 
     </head>
-    <body>
+    <body style="min-height:100vh;" class="dark:bg-gradient-to-b dark:from-[#001d39] dark:to-black">
 
-    {% include "products/components/header.html" %}
+        {% include "products/components/header.html" %}
 
-<h1>Search Results</h1>
+        <section class="p-2">
+            <h1 class= "mt-12 mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">Search Results</h1>
 
-{% if object_list%}
-    <table id="search-table">
-    {% for product in object_list %}
-        
-        <tr>
-            <td style="width:50%;padding:1em;"><a style="color:black;text-decoration:none" href={% url 'products:detail' product.id%}>
-                {{ product.title_text }}</a></td>
-            <td>{{ product.price_number }}</td>
-        </tr>
+            {% if object_list%}
+                <table class = "mx-auto max-w-screen-md" id="search-table" style="min-height:90vh;">
+                
+                    <tr class="">
+                        <th class="dark:text-white">Item</th>
+                        <th class="dark:text-white">Price</th>
+                    </tr>
 
-    {% endfor %}
-    </table>
-    
-{% else %}
-    <span> No items found</span>
-{% endif %}
+                {% for product in object_list %}
+                    
+                    <tr class="">
+                        <td class = ""> <a class="dark:text-white" href={% url 'products:detail' product.id%}>{{ product.title_text }}</a></td>
+                        <td class=" dark:text-white">{{ product.price_number }}</td>
+                    </tr>
 
-{%include "products/components/footer.html"%}
+                {% endfor %}
+                    
+                </table>
+                
+            {% else %}
+                <span> No items found</span>
+            {% endif %}
 
+            <nav class="max-w-5xl text-center mx-auto" aria-label="Page navigation example">
+                <ul class=" inline-flex -space-x-px text-sm">
+                    <li>
+                        <a href="?page=1" class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">First</a>
+                    </li>
+                    {% for i in page_obj.paginator.page_range %}
+                        {% if i == page_obj.number%}
+                        <li>
+                            <a href="?page={{i}}" aria-current="page" class="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">{{i}}</a>
+                        </li>
+                        {% else %}
+                        <li>
+                            <a href="?page={{i}}" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">{{i}}</a>
+                        </li>
+                        {% endif %}
+                        
+                    {% endfor %}
+                    <li>
+                        <a href="?page={{page_obj.paginator.num_pages}}" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Last</a>
+                    </li>
+                </ul>
+            </nav>
+        </section>
 
-</body>
+        {%include "products/components/footer.html"%}
+
+    </body>
 </html>

@@ -1,68 +1,109 @@
 <!DOCTYPE html>
 {% load static %}
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!<![endif]-->
+
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>LocalxDeal</title>
-        <meta name="description" content="Discover the {{productinfo.title_text}}, {{productinfo.description_text}}. Explore its key features, benefits, and specifications.">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{% static "css/detailStyle.css" %}">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:ital">
-        <script>0</script>
-    </head>
-    <body>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>LocalxDeal</title>
+    <meta
+      name="description"
+      content="Discover the {{productinfo.title_text}}, {{productinfo.description_text}}. Explore its key features, benefits, and specifications."
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <link rel="stylesheet" href="{% static "css/output.css"%}"> 
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Lato:ital"
+    />
+    <script is:inline>
+      // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+      if (
+        localStorage.getItem("color-theme") === "dark" ||
+        (!("color-theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
+  </head>
+  <body class="dark:bg-gradient-to-b dark:from-[#001d39] dark:to-black">
+    {% include "products/components/header.html" %}
 
-        {% include "products/components/header.html" %}
+    <section class="max-w-4xl mx-auto p-2 my-4">
+      {% if productinfo.show_onstore == True%}
 
-        
-        {% if productinfo.show_onstore == True%}
-            
-            <h1>{{productinfo.title_text}}</h1>
-            <h3>Description</h3>
-            <div id='description'>
-            <p>{{productinfo.description_text}}</p>
-            </div>
-            <div class="Price">
-                {% if productinfo.sold == False %}
-                    <span>Price &#36;{{productinfo.price_number}}</span>
-                {% else %}
-                    <span>Sold Out!</span>
-                {% endif %}
-            </div>
-            <p>Condition: {{productinfo.get_condition_display}}</p>
-            {% if productinfo.images.all %}
-                <div class='gallery-container'>
-                    <div id='main-image'>
-                        <img src="{{MEDIA_URL}}{{productinfo.images.all.0.image_url}}" alt= "{{ productinfo.images.all.0.alt_text}}" onclick="fullSizePic('{{MEDIA_URL}}{{productinfo.images.all.0.image_url}}')">
-                    </div>
-                    <div class='gallery-scrollable'>
-                {% for image in productinfo.images.all %}
-                    <div class='image-container'>    
-                        <img src= "{{MEDIA_URL}}{{image.image_url}}" alt= "{{ image.alt_text }}" onclick="changeMainImage('{{MEDIA_URL}}{{image.image_url}}')">
-                    </div>
-                {% endfor %}
-                    </div>
-                </div>
-            {% else %}
-                <p>No images available</p>
-            {% endif %}
+      <h1
+        class="text-2xl md:text-4xl font-bold mx-auto text-center my-2 lg:mb-8 dark:text-white"
+      >
+        {{productinfo.title_text}}
+      </h1>
+
+      {% if productinfo.images.all %}
+      <div class="grid gap-4 mb-3">
+        <div>
+          <img
+            id="mainImage"
+            class="w-[400px] h-[400px] max-w-full rounded-lg mx-auto"
+            src="{{MEDIA_URL}}{{productinfo.images.all.0.image_url}}"
+            alt=""
+          />
+        </div>
+        <div
+          class="max-w-4xl flex flex-row whitespace-nowrap overflow-x-auto mx-auto gap-3"
+        >
+          {% for image in productinfo.images.all %}
+          <div class="min-w-[200px] h-[200px] inline-block">
+            <img
+              class="h-full max-w-full rounded-lg mx-auto"
+              src="{{MEDIA_URL}}{{image.image_url}}"
+              alt=""
+              onclick="changeMainImage('{{MEDIA_URL}}{{image.image_url}}')"
+            />
+          </div>
+          {%endfor%}
+        </div>
+      </div>
+      {% else %}
+      <p>No images available</p>
+      {% endif %}
+
+      <div class="Price">
+        {% if productinfo.sold == False %}
+        <span class="text-red-900 dark:text-white text-3xl font-bold">
+          &#36;{{productinfo.price_number}}</span
+        >
         {% else %}
-            <h2>Product not Found</h2>
-        {% endif%}
-        
-        <h4 style="text-align:center;background-color:#d2d3d5;padding: 20px;font-size: 1.2em;"> Contact us about this product </h4>
-        
-        {%include '../contactapp/aboutproduct.html'%}
+        <span>Sold Out!</span>
+        {% endif %}
+      </div>
+      <p class="text-2xl dark:text-white">
+        Condition: {{productinfo.get_condition_display}}
+      </p>
 
-        {%include "products/components/footer.html"%}
-      
-        
-        <script type="text/javascript" src="{% static "javascript/detail.js" %}" async defer></script>
+      <h3 class="font-bold my-4 dark:text-white">About this item</h3>
+      <div class="my-2" id="description">
+        <p class="font-light dark:text-white">
+          {{productinfo.description_text}}
+        </p>
+      </div>
 
-    </body>
+      {% endif%} 
+    {%include '../contactapp/aboutproduct.html'%}
+    </section>
+
+    {%include "products/components/footer.html"%}
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const mainImage = document.getElementById("mainImage");
+
+        window.changeMainImage = function (imageUrl) {
+          mainImage.setAttribute("src", imageUrl);
+        };
+      });
+    </script>
+  </body>
 </html>

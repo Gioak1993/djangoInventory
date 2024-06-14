@@ -1,6 +1,5 @@
 {% load static %}
 <!DOCTYPE html>
-{% load static %}
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
@@ -13,12 +12,13 @@
         <meta name="description" content="pageNotFound">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:ital">
+        <link rel="stylesheet" href="{% static "css/output.css" %}">
 
     </head>
     <body style='min-height: 100%;font-family: "Lato", sans-serif;'>
 {% include 'products/components/header.html' %}
 
-<h1 style="text-align:center;padding:200px;">Page Not Found</h1>
+<h1 class="text-slate-600" style="text-align:center;padding:200px;">Page Not Found</h1>
 
     </body>
 
