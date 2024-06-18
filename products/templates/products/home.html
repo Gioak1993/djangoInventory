@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 {% load static %}
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -13,10 +13,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="{% static "css/output.css" %}">
     <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Lato:ital"
-    />
     <script is:inline>
       // On page load or when changing themes, best to add inline in `head` to avoid FOUC
       if (
@@ -59,7 +55,7 @@
         Our lastest arrivals
       </h2>
       {% if latest_products %}
-      <ul class="h-[32rem] whitespace-nowrap overflow-x-auto">
+      <ul class="h-[32rem] whitespace-nowrap overflow-x-auto w-screen mx-auto">
         {% for product in latest_products %}
 
         <li class="w-[350px] h-96 p-6 inline-block">
@@ -92,7 +88,7 @@
               <a
                 href="{% url 'products:detail' product.id %}"
                 class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                >See More</a
+                >Product Details</a
               >
             </div>
           </div>

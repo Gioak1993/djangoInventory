@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 {% load static %}
 
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,8 +9,19 @@
         <meta name="description" content="Search results tailored to your query. Explore a wide range of products, and resources matching your search terms. Discover the information you're looking for quickly and easily.">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{% static "css/output.css" %}">  
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:ital">
         <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+        <script is:inline>
+            // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+            if (
+              localStorage.getItem("color-theme") === "dark" ||
+              (!("color-theme" in localStorage) &&
+                window.matchMedia("(prefers-color-scheme: dark)").matches)
+            ) {
+              document.documentElement.classList.add("dark");
+            } else {
+              document.documentElement.classList.remove("dark");
+            }
+          </script>
         
         
 
