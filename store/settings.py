@@ -26,9 +26,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
 
-ALLOWED_HOSTS = ['www.etenda.us']
+environment = os.environ.get("ENVIRONMENT")
+
+if environment == 'Development':
+    DEBUG = True
+    ALLOWED_HOSTS = ['*']
+else:
+    DEBUG = False
+    ALLOWED_HOSTS = ['www.etenda.us']
+
 
 
 # Application definition
@@ -43,7 +50,6 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "storages",
     "contactapp",
-
 
 ]
 
@@ -86,18 +92,32 @@ WSGI_APPLICATION = "store.wsgi.application"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 # WHEN USING A TEST, CHANGE THE NAME TO EG: DB_NAME_TEST
 
-DATABASES = {
-  'default': {
-    'ENGINE': 'django.db.backends.mysql',
-    'NAME': os.environ.get('DB_NAME'),
-    'HOST': os.environ.get('DB_HOST'),
-    'USER': os.environ.get('DB_USER'),
-    'PASSWORD': os.environ.get('DB_PASSWORD'),
-    # 'HOST': '127.0.0.1', #for working locally only, needs an ssh connection
-    # 'PORT': '3306', ###for working locally only, needs an ssh connection
+if environment == 'Development':
 
-  }
-}
+    DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.environ.get('DB_NAME'),
+        'HOST': os.environ.get('DB_HOST'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'HOST': '127.0.0.1', #for working locally only, needs an ssh connection
+        'PORT': '3306', ###for working locally only, needs an ssh connection
+
+        }
+    }
+
+else:
+    DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.environ.get('DB_NAME'),
+        'HOST': os.environ.get('DB_HOST'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        }
+    }
+
 
 
 # Password validation
@@ -156,21 +176,24 @@ AWS_DEFAULT_ACL =  None
 AWS_S3_VERITY = True
 
 # comment if you need to make changes locally, uncomment before runing the collecstatics
-STORAGES = {
-    "default": {
-        "BACKEND": "storages.backends.s3.S3Storage",
-        "OPTIONS": {
-            "location": "media",
-        },
-    },    
-    "staticfiles": {
-        "BACKEND": "storages.backends.s3.S3Storage",
-        "OPTIONS": {
-            "location": "static",
-        },
-    },    
-}
 
+if environment == 'Development':
+    None
+else:     
+    STORAGES = {
+        "default": {
+            "BACKEND": "storages.backends.s3.S3Storage",
+            "OPTIONS": {
+                "location": "media",
+            },
+        },    
+        "staticfiles": {
+            "BACKEND": "storages.backends.s3.S3Storage",
+            "OPTIONS": {
+                "location": "static",
+            },
+        },    
+    }
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend" #for local development use console insteas "smtp"
 EMAIL_PORT = 587
