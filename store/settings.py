@@ -26,9 +26,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['www.etenda.us']
 
 
 # Application definition
@@ -93,8 +93,8 @@ DATABASES = {
     'HOST': os.environ.get('DB_HOST'),
     'USER': os.environ.get('DB_USER'),
     'PASSWORD': os.environ.get('DB_PASSWORD'),
-    'HOST': '127.0.0.1', #for working locally only, needs an ssh connection
-    'PORT': '3306', ###for working locally only, needs an ssh connection
+    # 'HOST': '127.0.0.1', #for working locally only, needs an ssh connection
+    # 'PORT': '3306', ###for working locally only, needs an ssh connection
 
   }
 }
