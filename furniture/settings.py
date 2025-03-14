@@ -28,7 +28,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['www.localxdeal.com']
+ALLOWED_HOSTS = ['www.etenda.us']
 
 
 # Application definition
@@ -40,8 +40,8 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
+    "django_browser_reload",
     "django.contrib.staticfiles",
-    # "django_browser_reload",
     "storages",
     "contactapp",
     # "compressor",
@@ -56,6 +56,8 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "django_browser_reload.middleware.BrowserReloadMiddleware",
+
     
 ]
 
