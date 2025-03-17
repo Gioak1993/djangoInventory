@@ -68,12 +68,11 @@
       {% endif %}
 
       <div class="Price">
-        {% if productinfo.sold == False %}
-        <span class="text-red-900 dark:text-white text-3xl font-bold">
-          &#36;{{productinfo.price_number}}</span
-        >
+        {% if productinfo.quantity == 0 %}
+          <span>Sold Out!</span>
         {% else %}
-        <span>Sold Out!</span>
+          <span class="text-red-900 dark:text-white text-3xl font-bold">
+            &#36;{{productinfo.price_number}}</span>
         {% endif %}
       </div>
       <p class="text-2xl dark:text-white">

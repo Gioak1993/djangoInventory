@@ -45,7 +45,7 @@ class ProductInfo (models.Model):
     rack_number = models.IntegerField("Rack number",default = 0)
     item_number = models.IntegerField("Item number", default = 0)
     show_onstore = models.BooleanField("Show in store?",default = True)
-    sold = models.BooleanField("Has been sold?",default = False)
+    quantity = models.IntegerField("Quatity",default = 0)
     category = models.ManyToManyField(Category)
     
 
